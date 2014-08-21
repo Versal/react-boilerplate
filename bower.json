@@ -1,0 +1,6 @@
+{
+  "name": "react-boilerplate-gadget",
+  "dependencies": {
+    "versal-player-api": "~0.3.3"
+  }
+}
