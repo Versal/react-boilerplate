@@ -1,8 +1,8 @@
-var AppModel = require('models/app_model'),
-    LearnerModel = require('models/learner_model');
+var AppModel = require('./models/app_model'),
+    LearnerModel = require('./models/learner_model');
 
 function Gadget(options) {
-  this.appModel = new AppModel({},{
+  this.appModel = new AppModel({}, {
     player: options.player
   });
 
@@ -15,7 +15,7 @@ function Gadget(options) {
 };
 
 Gadget.prototype.initPlayerInteraction = function (player) {
-  player.on('editableChanged', @onEditableChanged.bind(this));
+  player.on('editableChanged', this.onEditableChanged.bind(this));
 
   player.startListening()
   player.watchBodyHeight()
