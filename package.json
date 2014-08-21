@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "browserify": "~3.43.0",
+    "chai": "~1.9.1",
     "lodash": "~2.4.1",
     "mocha": "~1.18.2",
-    "chai": "~1.9.1",
-    "nib": "~1.0.2"
+    "nib": "~1.0.2",
+    "react": "^0.11.1"
   },
   "devDependencies": {
     "gulp": "^3.6.2",
@@ -16,8 +17,9 @@
   },
   "browserify": {
     "transform": [
-      ["reactify"]
+      [
+        "reactify"
+      ]
     ]
   }
 }
-
