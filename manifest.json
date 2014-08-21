@@ -1,0 +1,10 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.0.1",
+  "title": "React Boilerplate",
+  "description": "React gadget",
+  "author": "versal",
+  "launcher": "iframe",
+  "defaultConfig": {},
+  "defaultUserState": {}
+}
