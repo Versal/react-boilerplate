@@ -6,7 +6,9 @@ var gulp       = require('gulp'),
 
 gulp.task('browserify', function() {
   gulp.src('./scripts/gadget.js')
-    .pipe(browserify())
+    .pipe(browserify({
+      transform: ['reactify']
+    }))
     .pipe(concat('bundle.js'))
     .pipe(gulp.dest('./'));
 });
