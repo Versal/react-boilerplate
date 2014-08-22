@@ -8,6 +8,10 @@ AppModel.prototype.initPlayerListeners = function () {
   this.player.on('learnerStateChanged', this.onLearnerStateChanged.bind(this));
 };
 
+AppModel.prototype.setComponent = function(component) {
+  this.component = component;
+};
+
 AppModel.prototype.onLearnerStateChanged = function (attributes) {
   this.set(attributes);
 };
@@ -21,6 +25,14 @@ AppModel.prototype.set = function (attributes) {
     if (key && attributes.hasOwnProperty(key)) {
       this.attributes[key] = attributes[key];
     }
+  }
+
+  this.sync();
+};
+
+AppModel.prototype.sync = function () {
+  if (this.component && this.component.isMounted()) {
+    this.component.setProps({learnerState: this.attributes})
   }
 };
 

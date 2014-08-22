@@ -15,6 +15,14 @@ function Gadget(options) {
     player: options.player
   });
 
+  this.appComponent = new AppComponent({
+    appModel: this.appModel,
+    LearnerModel: this.learnerModel
+  });
+
+  this.learnerModel.setComponent(this.appComponent);
+  this.appModel.setComponent(this.appComponent);
+
   this.editable = false;
   this.initPlayerInteraction(options.player);
   this.render();
@@ -32,7 +40,7 @@ Gadget.prototype.onEditableChanged = function (data) {
 };
 
 Gadget.prototype.render = function () {
-  React.renderComponent(<AppComponent />, this.el);
+  React.renderComponent(<AppComponent appModel={this.appModel} learnerModel={this.learnerModel} />, this.el);
 };
 
 var player = new VersalPlayerAPI()
