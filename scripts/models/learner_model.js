@@ -1,39 +1,33 @@
-function AppModel (attributes, options) {
+function LearnerModel (attributes, options) {
   this.attributes = attributes || {};
   this.player = options.player;
+  this.component = options.component;
   this.initPlayerListeners();
 };
 
-AppModel.prototype.initPlayerListeners = function () {
+LearnerModel.prototype.initPlayerListeners = function () {
   this.player.on('learnerStateChanged', this.onLearnerStateChanged.bind(this));
 };
 
-AppModel.prototype.setComponent = function(component) {
-  this.component = component;
-};
-
-AppModel.prototype.onLearnerStateChanged = function (attributes) {
+LearnerModel.prototype.onLearnerStateChanged = function (attributes) {
   this.set(attributes);
 };
 
-AppModel.prototype.set = function (attributes) {
+LearnerModel.prototype.set = function (attributes) {
   var key;
   var keys = Object.keys(attributes);
 
   for (var i = 0; i < keys.length; i++) {
     key = attributes[ keys[i] ];
-    if (key && attributes.hasOwnProperty(key)) {
-      this.attributes[key] = attributes[key];
-    }
+    this.attributes[key] = attributes[key];
   }
 
-  this.sync();
+  this.component.setState({learnerState: this.attributes});
 };
 
-AppModel.prototype.sync = function () {
-  if (this.component && this.component.isMounted()) {
-    this.component.setProps({learnerState: this.attributes})
-  }
+
+LearnerModel.prototype.sync = function () {
+  this.player.setLearnerState(this.attributes);
 };
 
-module.exports = AppModel;
+module.exports = LearnerModel;
