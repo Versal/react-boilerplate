@@ -6,11 +6,13 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {editable: false};
   },
-  save: function (attributes) {
-    if (!this.props.attributes) {
-      return;
-    }
-    this.props.player.setAttributes(attributes);
+
+  setAttributes: function (attributes) {
+    this.props.player.setAttributes(this.state.attributes);
+  },
+
+  setLearnerState: function (learnerState) {
+    this.props.player.setLearnerState(this.state.learnerState);
   },
 
   onAttributesChanged: function (attributes) {
