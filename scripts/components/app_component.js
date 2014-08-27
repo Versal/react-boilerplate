@@ -8,11 +8,11 @@ module.exports = React.createClass({
   },
 
   setAttributes: function (attributes) {
-    this.props.player.setAttributes(this.state.attributes);
+    this.props.player.setAttributes(attributes);
   },
 
   setLearnerState: function (learnerState) {
-    this.props.player.setLearnerState(this.state.learnerState);
+    this.props.player.setLearnerState(learnerState);
   },
 
   onAttributesChanged: function (attributes) {
