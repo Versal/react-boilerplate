@@ -28,8 +28,8 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    player.startListening();
-    player.watchBodyHeight();
+    this.props.player.startListening();
+    this.props.player.watchBodyHeight();
   },
 
   componentWillMount: function() {
